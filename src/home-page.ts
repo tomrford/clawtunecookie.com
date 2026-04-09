@@ -14,6 +14,12 @@ export function renderHomePage({ cookieCount, paywallEnabled }: HomePageOptions)
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>claw-tune cookie</title>
+    <meta name="description" content="A penny for your fortune. Fortune cookies behind a 1-cent x402 paywall." />
+    <meta property="og:title" content="claw-tune cookie" />
+    <meta property="og:description" content="A penny for your fortune. Fortune cookies behind a 1-cent x402 paywall." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://clawtunecookie.com" />
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥠</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
