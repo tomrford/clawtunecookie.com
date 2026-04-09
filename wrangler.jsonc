@@ -4,7 +4,7 @@
   "compatibility_date": "2026-04-09",
   "workers_dev": true,
   "routes": [
-    { "pattern": "clawtunecookie.com/*", "zone_name": "clawtunecookie.com" }
+    { "pattern": "clawtunecookie.com", "custom_domain": true }
   ],
   "observability": {
     "logs": {
