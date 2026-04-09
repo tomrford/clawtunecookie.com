@@ -5,7 +5,7 @@ import type { MiddlewareHandler } from "hono";
 
 const NETWORK = "eip155:8453";
 const PRICE = "$0.01";
-const FACILITATOR_URL = "https://x402.org/facilitator";
+const FACILITATOR_URL = "https://facilitator.xpay.sh";
 const PAY_TO = "0x36df55e13520FA5607DAB4F43c0EfF7b9715Ef9A";
 
 export interface PaymentOptions {
