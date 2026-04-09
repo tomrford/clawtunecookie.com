@@ -1,10 +1,6 @@
 import type { FacilitatorClient } from "@x402/core/server";
 import { describe, expect, it } from "vitest";
-import { createApp, type EnvBindings } from "../src/app";
-
-function makeEnv(overrides: Partial<EnvBindings> = {}): EnvBindings {
-  return { ...overrides };
-}
+import { createApp } from "../src/app";
 
 const fakeFacilitator: FacilitatorClient = {
   async getSupported() {
@@ -23,7 +19,7 @@ const fakeFacilitator: FacilitatorClient = {
 describe("clawtunecookie worker", () => {
   it("serves the home page", async () => {
     const app = createApp();
-    const res = await app.fetch(new Request("https://example.com/"), makeEnv());
+    const res = await app.fetch(new Request("https://example.com/"));
 
     expect(res.status).toBe(200);
     expect(await res.text()).toContain("clawtunecookie.com");
@@ -31,7 +27,7 @@ describe("clawtunecookie worker", () => {
 
   it("redirects /source with a 303", async () => {
     const app = createApp();
-    const res = await app.fetch(new Request("https://example.com/source"), makeEnv());
+    const res = await app.fetch(new Request("https://example.com/source"));
 
     expect(res.status).toBe(303);
     expect(res.headers.get("location")).toBe(
@@ -39,26 +35,21 @@ describe("clawtunecookie worker", () => {
     );
   });
 
-  it("returns 503 when /cookie is not configured", async () => {
-    const app = createApp();
-    const res = await app.fetch(new Request("https://example.com/cookie"), makeEnv());
-
-    expect(res.status).toBe(503);
-    expect(await res.json<{ error: string }>()).toMatchObject({
-      error: expect.stringContaining("not configured"),
-    });
-  });
-
-  it("returns 402 when /cookie is configured but unpaid", async () => {
+  it("returns 402 when /cookie is unpaid", async () => {
     const app = createApp({ facilitatorFactory: () => fakeFacilitator });
-    const res = await app.fetch(
-      new Request("https://example.com/cookie"),
-      makeEnv({ X402_PAY_TO: "0x000000000000000000000000000000000000dEaD" }),
-    );
+    const res = await app.fetch(new Request("https://example.com/cookie"));
 
     expect(res.status).toBe(402);
     expect(await res.json<{ error: string }>()).toMatchObject({
       error: expect.stringContaining("Payment required"),
     });
+  });
+
+  it("returns 404 for unknown routes", async () => {
+    const app = createApp();
+    const res = await app.fetch(new Request("https://example.com/nope"));
+
+    expect(res.status).toBe(404);
+    expect(await res.text()).toContain("No fortune here");
   });
 });

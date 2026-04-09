@@ -6,13 +6,13 @@ import type { MiddlewareHandler } from "hono";
 const NETWORK = "eip155:8453";
 const PRICE = "$0.01";
 const FACILITATOR_URL = "https://x402.org/facilitator";
+const PAY_TO = "0x36df55e13520FA5607DAB4F43c0EfF7b9715Ef9A";
 
 export interface PaymentOptions {
   facilitatorFactory?: () => FacilitatorClient;
 }
 
 export function createCookiePaymentMiddleware(
-  payTo: string,
   options: PaymentOptions = {},
 ): MiddlewareHandler {
   const facilitator =
@@ -27,7 +27,7 @@ export function createCookiePaymentMiddleware(
   return paymentMiddleware(
     {
       "/cookie": {
-        accepts: [{ scheme: "exact", price: PRICE, network: NETWORK, payTo }],
+        accepts: [{ scheme: "exact", price: PRICE, network: NETWORK, payTo: PAY_TO }],
         description: "One random fortune cookie.",
         mimeType: "application/json",
         unpaidResponseBody: () => ({

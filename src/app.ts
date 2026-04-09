@@ -4,17 +4,12 @@ import { fortunes, pickRandomFortune } from "./fortunes";
 import { renderHomePage } from "./home-page";
 import { createCookiePaymentMiddleware, type PaymentOptions } from "./payment";
 
-export interface EnvBindings {
-  X402_PAY_TO?: string;
-}
-
 export function createApp(options: PaymentOptions = {}) {
-  const app = new Hono<{ Bindings: EnvBindings }>();
+  const app = new Hono();
   let middleware: MiddlewareHandler | null = null;
 
   app.get("/", (c) => {
-    const payTo = c.env.X402_PAY_TO?.trim();
-    return c.html(renderHomePage({ cookieCount: fortunes.length, paywallEnabled: !!payTo }));
+    return c.html(renderHomePage({ cookieCount: fortunes.length }));
   });
 
   app.get("/source", (c) =>
@@ -22,13 +17,8 @@ export function createApp(options: PaymentOptions = {}) {
   );
 
   app.use("/cookie", async (c, next) => {
-    const payTo = c.env.X402_PAY_TO?.trim();
-    if (!payTo) {
-      return c.json({ error: "Cookie payments are not configured yet." }, 503);
-    }
-
     if (!middleware) {
-      middleware = createCookiePaymentMiddleware(payTo, options);
+      middleware = createCookiePaymentMiddleware(options);
     }
 
     return middleware(c, next);

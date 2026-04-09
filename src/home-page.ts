@@ -1,12 +1,8 @@
 interface HomePageOptions {
   cookieCount: number;
-  paywallEnabled: boolean;
 }
 
-export function renderHomePage({ cookieCount, paywallEnabled }: HomePageOptions): string {
-  const status = paywallEnabled
-    ? "<code>/cookie</code> is live — 1 cent via x402."
-    : "<code>/cookie</code> is wired but the wallet isn't configured yet.";
+export function renderHomePage({ cookieCount }: HomePageOptions): string {
 
   return `<!doctype html>
 <html lang="en">
@@ -85,7 +81,7 @@ export function renderHomePage({ cookieCount, paywallEnabled }: HomePageOptions)
   <body>
     <main>
       <h1>claw-tune cookie</h1>
-      <p>A penny for your fortune? ${status} Guaranteed to inspire your claw.</p>
+      <p>A penny for your fortune? <code>/cookie</code> is live — 1 cent via x402. Guaranteed to inspire your claw.</p>
       <p>There are ${cookieCount} fortunes in <code>fortunes.json</code>, all checked into <a href="https://github.com/tomrford/clawtunecookie.com">the repo</a>.</p>
     </main>
   </body>
