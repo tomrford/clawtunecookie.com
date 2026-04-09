@@ -3,6 +3,9 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-04-09",
   "workers_dev": true,
+  "routes": [
+    { "pattern": "clawtunecookie.com/*", "zone_name": "clawtunecookie.com" }
+  ],
   "observability": {
     "logs": {
       "enabled": true
