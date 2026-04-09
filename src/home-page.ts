@@ -78,7 +78,7 @@ export function renderHomePage({ cookieCount, paywallEnabled }: HomePageOptions)
   </head>
   <body>
     <main>
-      <h1>clawtunecookie.com</h1>
+      <h1>claw-tune cookie</h1>
       <p>A penny for your fortune? ${status} Guaranteed to inspire your claw.</p>
       <p>There are ${cookieCount} fortunes in <code>fortunes.json</code>, all checked into <a href="https://github.com/tomrford/clawtunecookie.com">the repo</a>.</p>
     </main>
