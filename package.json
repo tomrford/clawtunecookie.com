@@ -1,0 +1,45 @@
+{
+  "name": "clawtunecookie.com",
+  "version": "1.0.0",
+  "description": "clawtunecookie.com Cloudflare Worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test",
+    "deploy": "wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomrford/clawtunecookie.com.git"
+  },
+  "keywords": [
+    "cloudflare-workers",
+    "hono",
+    "x402"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomrford/clawtunecookie.com/issues"
+  },
+  "homepage": "https://github.com/tomrford/clawtunecookie.com#readme",
+  "overrides": {
+    "axios": "1.15.0"
+  },
+  "dependencies": {
+    "@x402/core": "2.9.0",
+    "@x402/evm": "2.9.0",
+    "@x402/hono": "2.9.0",
+    "@x402/paywall": "2.9.0",
+    "hono": "4.12.12"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "4.20260409.1",
+    "typescript": "5.9.3",
+    "vitest": "4.1.0",
+    "wrangler": "4.81.1"
+  }
+}
