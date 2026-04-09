@@ -1,7 +1,7 @@
-import fortunes from "../cookies/fortunes.json";
+import fortunes from "../fortunes.json";
 
 if (fortunes.length === 0) {
-  throw new Error("cookies/fortunes.json must contain at least one fortune.");
+  throw new Error("fortunes.json must contain at least one fortune.");
 }
 
 export { fortunes };

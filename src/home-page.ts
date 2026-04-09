@@ -13,7 +13,7 @@ export function renderHomePage({ cookieCount, paywallEnabled }: HomePageOptions)
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>clawtunecookie.com</title>
+    <title>claw-tune cookie</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥠</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -79,7 +79,7 @@ export function renderHomePage({ cookieCount, paywallEnabled }: HomePageOptions)
   <body>
     <main>
       <h1>clawtunecookie.com</h1>
-      <p>A penny for your fortune? ${status} Guaranteed to bring your Openclaw luck.</p>
+      <p>A penny for your fortune? ${status} Guaranteed to inspire your claw.</p>
       <p>There are ${cookieCount} fortunes in <code>fortunes.json</code>, all checked into <a href="https://github.com/tomrford/clawtunecookie.com">the repo</a>.</p>
     </main>
   </body>

@@ -16,6 +16,6 @@
   "include": [
     "src/**/*.ts",
     "test/**/*.ts",
-    "cookies/**/*.json"
+    "fortunes.json"
   ]
 }
